@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [question, setQuestion] = useState<{ id: number; title: string; text: string } | null>(null)
+  const [question, setQuestion] = useState<{ id: number; title: string; answerText: string } | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -32,7 +32,7 @@ function App() {
       {question && (
         <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
           <h1>{question.title}</h1>
-          <p>{question.text}</p>
+          <p>{question.answerText}</p>
         </div>
       )}
     </div>
