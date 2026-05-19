@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.List;
+
 
 @Configuration
 public class DataInitializer {
@@ -35,6 +37,7 @@ public class DataInitializer {
                 Question question = new Question();
                 question.setTitle("Frage Titel");
                 question.setAnswerText("Hier soll der Text der Frage stehen");
+                question.setNotes(List.of("Hinweis 1", "Hinweis 2", "Hinweis 3"));
 
                 questionRepo.save(question);
 
