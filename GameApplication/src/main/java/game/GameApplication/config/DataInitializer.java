@@ -34,7 +34,7 @@ public class DataInitializer {
             if (questionRepo.count() == 0) {
                 Question question = new Question();
                 question.setTitle("Frage Titel");
-                question.setText("Hier soll der Text der Frage stehen");
+                question.setAnswerText("Hier soll der Text der Frage stehen");
 
                 questionRepo.save(question);
 

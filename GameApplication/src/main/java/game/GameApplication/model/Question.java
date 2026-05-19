@@ -18,5 +18,5 @@ public class Question {
     private Long id;
 
     private String title;
-    private String text;
+    private String answerText;
 }
