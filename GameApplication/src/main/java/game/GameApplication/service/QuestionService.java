@@ -24,10 +24,8 @@ public class QuestionService {
         }
 
         if(question.getAnswerText().trim().equalsIgnoreCase(normalizedAnswer)){
-            System.out.println("true");
             return true;
         }
-        System.out.println("false");
         return false;
     }
 }
