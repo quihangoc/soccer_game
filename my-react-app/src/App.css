@@ -137,6 +137,109 @@ body {
   margin: 0;
 }
 
+.answer-form {
+  margin-bottom: 30px;
+  padding: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  background: #fafafa;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.answer-form.correct {
+  border-color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+}
+
+.answer-form.wrong {
+  border-color: #c62828;
+  background: rgba(198, 40, 40, 0.08);
+}
+
+.answer-input-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.answer-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.answer-form.correct .answer-input {
+  border-color: #2e7d32;
+}
+
+.answer-form.wrong .answer-input {
+  border-color: #c62828;
+}
+
+.answer-input:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 4px rgba(11, 90, 59, 0.08);
+}
+
+.answer-submit {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-green) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.answer-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.answer-submit:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.answer-result {
+  margin-top: 18px;
+}
+
+.result-text {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.result-text.success {
+  color: #2e7d32;
+}
+
+.result-text.error {
+  color: #c62828;
+}
+
+.correct-answer {
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.answer-form-error {
+  margin-top: 12px;
+  color: #c62828;
+  font-weight: 600;
+}
+
 /* Notes Grid */
 .notes-grid {
   display: flex;
@@ -377,40 +480,5 @@ body {
 
   .next-button {
     width: 100%;
-  }
-}
-
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
   }
 }
