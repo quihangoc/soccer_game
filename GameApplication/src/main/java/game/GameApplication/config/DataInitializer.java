@@ -36,7 +36,7 @@ public class DataInitializer {
             if (questionRepo.count() == 0) {
                 Question question = new Question();
                 question.setTitle("Frage Titel");
-                question.setAnswerText("Hier soll der Text der Frage stehen");
+                question.setAnswerText("Antwort");
                 question.setNotes(List.of("Hinweis 1", "Hinweis 2", "Hinweis 3"));
 
                 questionRepo.save(question);

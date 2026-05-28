@@ -4,10 +4,7 @@ import game.GameApplication.model.Question;
 import game.GameApplication.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/question")
@@ -23,5 +20,10 @@ public class QuestionController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(question);
+    }
+
+    @PostMapping("/{id}/checkAnswer")
+    public ResponseEntity<Boolean> validateAnswer(@PathVariable Long id, @RequestBody String answer){
+        return ResponseEntity.ok(questionService.validateAnswer(id, answer));
     }
 }

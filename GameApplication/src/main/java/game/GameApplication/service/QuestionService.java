@@ -15,4 +15,19 @@ public class QuestionService {
         Question question = questionRepo.findById(id).get();
         return question;
     }
+
+    public boolean validateAnswer(Long id, String answer){
+        Question question = questionRepo.findById(id).get();
+        String normalizedAnswer = answer == null ? "" : answer.trim();
+        if (normalizedAnswer.startsWith("\"") && normalizedAnswer.endsWith("\"") && normalizedAnswer.length() > 1) {
+            normalizedAnswer = normalizedAnswer.substring(1, normalizedAnswer.length() - 1).trim();
+        }
+
+        if(question.getAnswerText().trim().equalsIgnoreCase(normalizedAnswer)){
+            System.out.println("true");
+            return true;
+        }
+        System.out.println("false");
+        return false;
+    }
 }
