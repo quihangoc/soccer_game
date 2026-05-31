@@ -1,6 +1,10 @@
+export enum QuestionType {
+  NOTE_QUIZ = 'NOTE_QUIZ',
+}
+
 export interface QuestionData {
   id: number
-  questionType: 'NOTE_QUIZ'
+  questionType: QuestionType
   title: string
   answerText: string
   notes: string[]
