@@ -1,5 +1,6 @@
 export interface QuestionData {
   id: number
+  questionType: 'NOTE_QUIZ'
   title: string
   answerText: string
   notes: string[]
