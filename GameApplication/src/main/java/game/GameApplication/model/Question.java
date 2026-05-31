@@ -1,6 +1,9 @@
 package game.GameApplication.model;
 
+import game.GameApplication.model.QuestionType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +22,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    private QuestionType questionType;
     private String title;
     private String answerText;
     private List<String> notes;

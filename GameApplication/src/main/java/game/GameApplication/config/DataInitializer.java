@@ -2,6 +2,7 @@ package game.GameApplication.config;
 
 
 import game.GameApplication.model.Question;
+import game.GameApplication.model.QuestionType;
 import game.GameApplication.repository.QuestionRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +36,7 @@ public class DataInitializer {
 
             if (questionRepo.count() == 0) {
                 Question question = new Question();
+                question.setQuestionType(QuestionType.NOTE_QUIZ);
                 question.setTitle("Frage Titel");
                 question.setAnswerText("Antwort");
                 question.setNotes(List.of("Hinweis 1", "Hinweis 2", "Hinweis 3"));
