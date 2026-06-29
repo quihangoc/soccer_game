@@ -20,6 +20,14 @@ export async function fetchQuestion(questionId: number): Promise<QuestionData> {
   return response.json()
 }
 
+export async function fetchRandomQuestion(): Promise<QuestionData> {
+  const response = await fetch(`${API_BASE}/random`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch random question')
+  }
+  return response.json()
+}
+
 export async function checkAnswer(questionId: number, answer: string): Promise<boolean> {
   const response = await fetch(`${API_BASE}/${questionId}/checkAnswer`, {
     method: 'POST',

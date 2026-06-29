@@ -22,6 +22,15 @@ public class QuestionController {
         return ResponseEntity.ok(question);
     }
 
+    @GetMapping("/random")
+    public ResponseEntity<?> getRandomQuestion(){
+        Question randomQuestion = questionService.getRandomQuestion();
+        if(randomQuestion == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(randomQuestion);
+    }
+
     @PostMapping("/{id}/checkAnswer")
     public ResponseEntity<Boolean> validateAnswer(@PathVariable Long id, @RequestBody String answer){
         return ResponseEntity.ok(questionService.validateAnswer(id, answer));
