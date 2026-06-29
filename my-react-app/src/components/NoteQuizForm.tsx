@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchQuestion, checkAnswer } from '../api/questionApi'
+import { fetchRandomQuestion, checkAnswer } from '../api/questionApi'
 import type { QuestionData } from '../api/questionApi'
 import { QuestionCard } from './QuestionCard'
 import { NotesGrid } from './NotesGrid'
@@ -22,28 +22,32 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
   const [answerLoading, setAnswerLoading] = useState(false)
   const [answerError, setAnswerError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const loadQuestion = async () => {
-      setLoading(true)
-      setError(null)
-      setNoteIndex(0)
-      setAnswer('')
-      setAnswerStatus(null)
-      setAnswerSubmitted(false)
-      setAnswerError(null)
+  const loadQuestion = async () => {
+    setLoading(true)
+    setError(null)
+    setNoteIndex(0)
+    setAnswer('')
+    setAnswerStatus(null)
+    setAnswerSubmitted(false)
+    setAnswerError(null)
 
-      try {
-        const data = await fetchQuestion(1)
-        setQuestion(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
-      } finally {
-        setLoading(false)
-      }
+    try {
+      const data = await fetchRandomQuestion()
+      setQuestion(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
+    } finally {
+      setLoading(false)
     }
+  }
 
+  useEffect(() => {
     loadQuestion()
   }, [])
+
+  const handleNextQuestion = () => {
+    loadQuestion()
+  }
 
   const handleNextNote = () => {
     if (question && noteIndex < question.notes.length - 1) {
@@ -83,6 +87,9 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
     <div className="content-box">
       <button className="back-button" onClick={onBack}>
         ← Zurück zur Startseite
+      </button>
+      <button className="next-question-button" onClick={handleNextQuestion} disabled={loading}>
+        Nächste Zufällige Frage
       </button>
 
       {loading && <LoadingSpinner />}
