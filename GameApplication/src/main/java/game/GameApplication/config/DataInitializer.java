@@ -61,7 +61,7 @@ public class DataInitializer {
 
                 questions.add(createQuestion(
                         "Wer ist der französische Superstar, der für seine Geschwindigkeit bekannt ist?",
-                        "Kylian Mbappé",
+                        "Kylian Mbappe",
                         List.of(
                                 "Er wurde Weltmeister mit Frankreich",
                                 "Er spielt(e) für Paris Saint-Germain und Real Madrid",

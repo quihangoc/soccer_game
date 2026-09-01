@@ -1,6 +1,5 @@
 package game.GameApplication.model;
 
-import game.GameApplication.model.QuestionType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
