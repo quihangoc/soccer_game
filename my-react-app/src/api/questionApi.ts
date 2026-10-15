@@ -1,5 +1,6 @@
 export enum QuestionType {
   NOTE_QUIZ = 'NOTE_QUIZ',
+  DRINKING_GAME = 'DRINKING_GAME',
 }
 
 export interface QuestionData {
@@ -24,6 +25,14 @@ export async function fetchRandomQuestion(): Promise<QuestionData> {
   const response = await fetch(`${API_BASE}/random`)
   if (!response.ok) {
     throw new Error('Failed to fetch random question')
+  }
+  return response.json()
+}
+
+export async function fetchDrinkingGame(): Promise<QuestionData> {
+  const response = await fetch(`${API_BASE}/drinkingGame`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch drinking game')
   }
   return response.json()
 }

@@ -1,5 +1,6 @@
 package game.GameApplication.model;
 
 public enum QuestionType {
-    NOTE_QUIZ
+    NOTE_QUIZ,
+    DRINKING_GAME
 }

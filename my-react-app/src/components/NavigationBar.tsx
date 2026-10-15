@@ -23,7 +23,7 @@ export function NavigationBar({ currentIndex, totalItems, onNextClick }: Navigat
         disabled={isLastItem}
         className={`next-button ${isLastItem ? 'disabled' : ''}`}
       >
-        {isLastItem ? '✓ Alle Tipps angezeigt' : 'Nächsten Tipp →'}
+        {isLastItem ? 'Alle Tipps aufgedeckt' : 'Nächsten Tipp aufdecken'}
       </button>
     </div>
   )
