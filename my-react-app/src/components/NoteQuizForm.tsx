@@ -84,12 +84,12 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
   }
 
   return (
-    <div className="content-box">
+    <div className="content-box theme-sun">
       <button className="back-button" onClick={onBack}>
-        ← Zurück zur Startseite
+        ← Zur Spielauswahl
       </button>
       <button className="next-question-button" onClick={handleNextQuestion} disabled={loading}>
-        Nächste Zufällige Frage
+        Neue Frage
       </button>
 
       {loading && <LoadingSpinner />}

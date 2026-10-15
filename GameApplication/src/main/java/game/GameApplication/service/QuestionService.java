@@ -1,6 +1,7 @@
 package game.GameApplication.service;
 
 import game.GameApplication.model.Question;
+import game.GameApplication.model.QuestionType;
 import game.GameApplication.repository.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class QuestionService {
     }
 
     public Question getRandomQuestion(){
-        List<Question> questionList = questionRepo.findAll();
+        List<Question> questionList = questionRepo.findAllByQuestionType(QuestionType.NOTE_QUIZ);
 
         if (questionList.isEmpty()) {
             return null; 
@@ -39,6 +40,11 @@ public class QuestionService {
         String normalizedExpectedAnswer = normalizeText(question.getAnswerText());
 
         return normalizedExpectedAnswer.equals(normalizedAnswer);
+    }
+
+    public Question getDrinkingGame() {
+        return questionRepo.findByQuestionType(QuestionType.DRINKING_GAME)
+                .orElse(null);
     }
 
     private String normalizeText(String value) {

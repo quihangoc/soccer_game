@@ -1,9 +1,9 @@
 export function Header() {
   return (
-    <header className="soccer-header">
+    <header className="app-header">
       <div className="header-container">
-        <h1 className="header-title">🎮 Spielauswahl</h1>
-        <p className="header-subtitle">Entdecke verschiedene Quizformate und teste dein Wissen.</p>
+        <h1 className="header-title">Spieleabend</h1>
+        <p className="header-subtitle">Quiz, Karten und Runden für alle am Tisch.</p>
       </div>
     </header>
   )

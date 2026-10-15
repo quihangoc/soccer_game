@@ -35,4 +35,14 @@ public class QuestionController {
     public ResponseEntity<Boolean> validateAnswer(@PathVariable Long id, @RequestBody String answer){
         return ResponseEntity.ok(questionService.validateAnswer(id, answer));
     }
+
+    @GetMapping("/drinkingGame")
+    public ResponseEntity<?> getDrinkingGame(){
+        Question drinkingGame = questionService.getDrinkingGame();
+        if(drinkingGame == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(drinkingGame);
+    }
+
 }
