@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { fetchRandomQuestion, checkAnswer } from '../api/questionApi'
-import type { QuestionData } from '../api/questionApi'
+import { fetchRandomQuizQuestion, checkAnswer } from '../api/gameApi'
+import type { AnswerResult, QuizQuestion } from '../api/gameApi'
 import { QuestionCard } from './QuestionCard'
 import { NotesGrid } from './NotesGrid'
 import { NavigationBar } from './NavigationBar'
@@ -12,13 +12,12 @@ interface NoteQuizFormProps {
 }
 
 export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
-  const [question, setQuestion] = useState<QuestionData | null>(null)
+  const [question, setQuestion] = useState<QuizQuestion | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [noteIndex, setNoteIndex] = useState(0)
   const [answer, setAnswer] = useState('')
-  const [answerStatus, setAnswerStatus] = useState<'correct' | 'wrong' | null>(null)
-  const [answerSubmitted, setAnswerSubmitted] = useState(false)
+  const [answerResult, setAnswerResult] = useState<AnswerResult | null>(null)
   const [answerLoading, setAnswerLoading] = useState(false)
   const [answerError, setAnswerError] = useState<string | null>(null)
 
@@ -27,12 +26,11 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
     setError(null)
     setNoteIndex(0)
     setAnswer('')
-    setAnswerStatus(null)
-    setAnswerSubmitted(false)
+    setAnswerResult(null)
     setAnswerError(null)
 
     try {
-      const data = await fetchRandomQuestion()
+      const data = await fetchRandomQuizQuestion()
       setQuestion(data)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
@@ -50,7 +48,7 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
   }
 
   const handleNextNote = () => {
-    if (question && noteIndex < question.notes.length - 1) {
+    if (question && noteIndex < question.hints.length - 1) {
       setNoteIndex(noteIndex + 1)
     }
   }
@@ -67,17 +65,12 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
 
     setAnswerLoading(true)
     setAnswerError(null)
-    setAnswerSubmitted(false)
-    setAnswerStatus(null)
+    setAnswerResult(null)
 
     try {
-      const isCorrect = await checkAnswer(question.id, trimmedAnswer)
-      setAnswerStatus(isCorrect ? 'correct' : 'wrong')
-      setAnswerSubmitted(true)
+      setAnswerResult(await checkAnswer(question.id, trimmedAnswer))
     } catch (err) {
       setAnswerError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
-      setAnswerSubmitted(false)
-      setAnswerStatus(null)
     } finally {
       setAnswerLoading(false)
     }
@@ -98,9 +91,9 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
       {question && (
         <>
           <QuestionCard title={question.title} />
-          <NotesGrid notes={question.notes} noteIndex={noteIndex} />
+          <NotesGrid notes={question.hints} noteIndex={noteIndex} />
 
-          <div className={`answer-form ${answerSubmitted ? answerStatus : ''}`}>
+          <div className={`answer-form ${answerResult ? (answerResult.correct ? 'correct' : 'wrong') : ''}`}>
             <form className="answer-input-row" onSubmit={handleSubmitAnswer}>
               <input
                 className="answer-input"
@@ -109,8 +102,7 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
                 onChange={(event) => {
                   setAnswer(event.target.value)
                   setAnswerError(null)
-                  setAnswerSubmitted(false)
-                  setAnswerStatus(null)
+                  setAnswerResult(null)
                 }}
                 placeholder="Deine Antwort hier eingeben"
                 aria-label="Antwort eingeben"
@@ -124,13 +116,13 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
               </button>
             </form>
 
-            {answerSubmitted && (
+            {answerResult && (
               <div className="answer-result">
-                <p className={`result-text ${answerStatus === 'correct' ? 'success' : 'error'}`}>
-                  {answerStatus === 'correct' ? 'Richtig!' : 'Leider falsch.'}
+                <p className={`result-text ${answerResult.correct ? 'success' : 'error'}`}>
+                  {answerResult.correct ? 'Richtig!' : 'Leider falsch.'}
                 </p>
                 <p className="correct-answer">
-                  Richtige Antwort: <strong>{question.answerText}</strong>
+                  Richtige Antwort: <strong>{answerResult.correctAnswer}</strong>
                 </p>
               </div>
             )}
@@ -140,7 +132,7 @@ export function NoteQuizForm({ onBack }: NoteQuizFormProps) {
 
           <NavigationBar
             currentIndex={noteIndex}
-            totalItems={question.notes.length}
+            totalItems={question.hints.length}
             onNextClick={handleNextNote}
           />
         </>

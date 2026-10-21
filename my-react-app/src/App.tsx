@@ -5,11 +5,13 @@ import { QuestionCard } from './components/QuestionCard'
 import { NoteQuizForm } from './components/NoteQuizForm'
 import { DrinkingGameForm } from './components/DrinkingGameForm'
 
-enum Page {
-  HOME = 'home',
-  NOTE_QUIZ = 'notequiz',
-  DRINKING_GAME = 'drinkinggame',
-}
+const Page = {
+  HOME: 'home',
+  NOTE_QUIZ: 'notequiz',
+  DRINKING_GAME: 'drinkinggame',
+} as const
+
+type Page = (typeof Page)[keyof typeof Page]
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>(Page.HOME)

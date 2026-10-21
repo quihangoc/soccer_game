@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Wer ist der erfolgreichste deutsche Fußballspieler?",
+    "answer": "Toni Kroos",
+    "hints": [
+      "Er hat bereits aufgehört Fußball zu spielen",
+      "Er hat unter anderem bei Real Madrid und Bayern gespielt",
+      "Er ist Weltmeister"
+    ]
+  },
+  {
+    "title": "Wer ist der Superstar in der argentinischen Nationalmannschaft?",
+    "answer": "Lionel Messi",
+    "hints": [
+      "Er hat lange Jahre bei Barcelona gespielt",
+      "Aktuell spielt er in Amerika",
+      "Sein Spitzname ist Leo"
+    ]
+  },
+  {
+    "title": "Wer ist der französische Superstar, der für seine Geschwindigkeit bekannt ist?",
+    "answer": "Kylian Mbappe",
+    "hints": [
+      "Er wurde Weltmeister mit Frankreich",
+      "Er spielt(e) für Paris Saint-Germain und Real Madrid",
+      "Er ist extrem schnell"
+    ]
+  },
+  {
+    "title": "Wer ist das junge Talent vom FC Barcelona?",
+    "answer": "Lamine Yamal",
+    "hints": [
+      "Er spielt beim FC Barcelona",
+      "Er debütierte sehr jung",
+      "Er gilt als Mega-Talent"
+    ]
+  },
+  {
+    "title": "Wer ist der ägyptische Superstar von Liverpool?",
+    "answer": "Mohamed Salah",
+    "hints": [
+      "Er spielt beim FC Liverpool",
+      "Er ist einer der besten Scorer der Premier League",
+      "Er ist Kapitän von Ägypten"
+    ]
+  },
+  {
+    "title": "Wer ist der niederländische Abwehrchef von Liverpool?",
+    "answer": "Virgil van Dijk",
+    "hints": [
+      "Er ist Innenverteidiger",
+      "Er gewann die Champions League mit Liverpool",
+      "Er ist einer der besten Verteidiger der Welt"
+    ]
+  },
+  {
+    "title": "Wer ist der englische Rechtsverteidiger von Liverpool?",
+    "answer": "Trent Alexander-Arnold",
+    "hints": [
+      "Er kommt aus der Liverpool-Jugend",
+      "Er ist bekannt für seine Flanken",
+      "Er spielt Rechtsverteidiger"
+    ]
+  },
+  {
+    "title": "Wer ist der belgische Spielmacher von Manchester City?",
+    "answer": "Kevin De Bruyne",
+    "hints": [
+      "Er ist einer der besten Passgeber der Welt",
+      "Er spielt bei Manchester City",
+      "Er ist belgischer Nationalspieler"
+    ]
+  },
+  {
+    "title": "Wer ist der italienische Spielmacher mit legendärer Übersicht?",
+    "answer": "Andrea Pirlo",
+    "hints": [
+      "Er spielte bei Juventus und AC Milan",
+      "Er gewann die WM 2006",
+      "Er war bekannt für seine Ruhe am Ball"
+    ]
+  },
+  {
+    "title": "Wer ist der brasilianische Ballon-d'Or Gewinner von 2007?",
+    "answer": "Kaka",
+    "hints": [
+      "Er spielte bei AC Milan",
+      "Er gewann den Ballon d'Or 2007",
+      "Er war sehr elegant am Ball"
+    ]
+  }
+]
