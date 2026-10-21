@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchDrinkingGame } from '../api/questionApi'
+import { fetchDrinkingCards } from '../api/gameApi'
 import { LoadingSpinner } from './LoadingSpinner'
 import { ErrorMessage } from './ErrorMessage'
 
@@ -34,8 +34,7 @@ export function DrinkingGameForm({ onBack }: DrinkingGameFormProps) {
       setLoading(true)
       setError(null)
       try {
-        const data = await fetchDrinkingGame()
-        const cards = data.notes ?? []
+        const cards = (await fetchDrinkingCards()).map((card) => card.text)
         setAllCards(cards)
         startRound(cards)
       } catch (err) {
